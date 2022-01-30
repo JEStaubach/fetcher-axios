@@ -1,3 +1,13 @@
+type Request = {
+  method: `get`;
+  url: string;
+};
+
+type Response = {
+  status: number;
+  headers?: Record<string, string>;
+};
+
 type Path = string;
 
 type RetVal = {
@@ -23,4 +33,6 @@ export {
   RetString,
   RetVal,
   RetPath,
+  Request,
+  Response,
 };

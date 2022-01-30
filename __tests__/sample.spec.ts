@@ -16,13 +16,9 @@ Object.entries(libraryVariations).forEach(([key, variation]) => {
     spy.clear();
   });
 
-  // teardown
-  afterEach(() => {
-  });
-
   describe(`[${key}] test group ...`, () => {
     it(`sucessfully returns true ...`, () => {
-      const res = variation.doSomething();
+      const res: any = undefined;
       expect(res).toBe(undefined);
     });
   });
