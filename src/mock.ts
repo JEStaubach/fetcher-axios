@@ -1,6 +1,7 @@
-import { Response } from 'src/types';
+import { Request, Response } from 'src/types';
+import {jest} from '@jest/globals';
 
-const mock = jest.fn(({ _method, url }): Promise<Response> => {
+const mock = jest.fn(({ method, url }:Request): Promise<Response> => {
   switch (true) {
     case /terraform\/500Error\/aws/.test(url): {
       // Mock call to Axios to retrieve Terraform download URL,

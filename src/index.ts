@@ -25,10 +25,4 @@ function use(fetchLibrary: (_: Request) => Promise<Response>): (_: Record<string
   };
 }
 
-export type Fetcher = {
-  use: (_: (_: Request) => Promise<Response>) => (_: Record<string, string>) => Promise<RetString>;
-  default: (_: Request) => Promise<Response>;
-  mock: (_: Request) => Promise<Response>;
-}
-
-export default { use, default: axios, mock: mock.mock } as unknown as Fetcher;
+export default { use, default: axios, mock: mock.mock };
