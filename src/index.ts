@@ -31,4 +31,4 @@ export type Fetcher = {
   mock: (_: Request) => Promise<Response>;
 }
 
-export default { use, default: axios, mock } as unknown as Fetcher;
+export default { use, default: axios, mock: mock.mock } as unknown as Fetcher;
