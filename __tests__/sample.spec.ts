@@ -6,7 +6,7 @@ import { spy } from '__tests__/testUtils';
 
 // iterate over mocked and unmocked versions of the library
 const libraryVariations = {
-  //mocked: lib.use(lib.mock),
+  mocked: lib.use(lib.mock),
   unmocked: lib.use(lib.default),
 }
 Object.entries(libraryVariations).forEach(([key, variation]) => {
