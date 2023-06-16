@@ -22,8 +22,8 @@
   "license": "MIT",
   "private": false,
   "type": "module",
-  "main": "./dist/cloner-git.umd.cjs",
-  "module": "./dist/cloner-git.js",
+  "main": "./dist/fetcher-axios.umd.cjs",
+  "module": "./dist/fetcher-axios.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
