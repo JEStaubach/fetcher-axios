@@ -1,6 +1,6 @@
-import { Request, Response } from 'src/types';
+import { Request, Response } from './types';
 
-const mock = (({ method, url }:Request): Promise<Response> => {
+const mock = (({ /*method,*/ url }:Request): Promise<Response> => {
   switch (true) {
     case /terraform\/500Error\/aws/.test(url): {
       // Mock call to Axios to retrieve Terraform download URL,

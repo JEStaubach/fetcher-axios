@@ -27,7 +27,7 @@ interface RetPath extends RetVal {
   value?: Path;
 }
 
-export {
+export type {
   Path,
   RetBool,
   RetString,

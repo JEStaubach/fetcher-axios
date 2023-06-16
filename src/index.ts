@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { Request, Response, RetString } from 'src/types';
-import mock from 'src/mock';
+import { Request, Response, RetString } from './types';
+import mock from './mock';
 
 function use(fetchLibrary: (_: Request) => Promise<Response>): (_: Record<string, string>) => Promise<RetString> {
   return async function fetcher({ url }: Record<string, string>): Promise<RetString> {
