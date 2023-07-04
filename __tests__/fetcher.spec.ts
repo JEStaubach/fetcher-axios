@@ -1,6 +1,5 @@
 import lib from '../src/index';
 import fsHelpers from '@jestaubach/fs-helpers';
-import exp from 'constants';
 import { beforeAll, afterEach, beforeEach, describe, it, expect, vi } from 'vitest';
 
 const fsh = fsHelpers.use(fsHelpers.default);

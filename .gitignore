@@ -108,3 +108,5 @@ dist
 
 # debug file
 debug.log
+
+.secrets.*
