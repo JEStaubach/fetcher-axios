@@ -8,11 +8,9 @@ type Response = {
   headers?: Record<string, string>;
 };
 
-type Path = string;
-
 type RetVal = {
   success: boolean;
-  error?: string;
+  error?: string | null;
 };
 
 interface RetString extends RetVal {
@@ -24,11 +22,10 @@ interface RetBool extends RetVal {
 }
 
 interface RetPath extends RetVal {
-  value?: Path;
+  value?: string;
 }
 
 export type {
-  Path,
   RetBool,
   RetString,
   RetVal,

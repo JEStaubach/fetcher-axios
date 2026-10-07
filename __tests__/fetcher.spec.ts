@@ -1,12 +1,5 @@
 import lib from '../src/index';
-import fsHelpers from '@jestaubach/fs-helpers';
-import { beforeAll, afterEach, beforeEach, describe, it, expect, vi } from 'vitest';
-
-const fsh = fsHelpers.use(fsHelpers.default);
-//const fetch = lib.use(lib.mock);
-
-// create all test directories and files inside one root directory for easy cleanup
-const rootTestDir = `.testDir`;
+import { describe, it, expect } from 'vitest';
 
 // iterate over mocked and unmocked versions of the library
 const libraryVariations = {
@@ -14,81 +7,69 @@ const libraryVariations = {
   unmocked: lib.use(lib.default),
 }
 
-// setup
-beforeEach(async () => {
-  vi.resetAllMocks();
-  await fsh.rimrafDir(`${rootTestDir}`);
-});
-
-// teardown
-afterEach(async () => {
-  await fsh.rimrafDir(`${rootTestDir}`);
-});
-
-
 for (const [key, variation] of Object.entries(libraryVariations)) {
 
   await describe(`[${key}] test group ...`, async () => {
 
     if (key === `mocked`) {
 
-      await it(`500 Error ...`, async () => {
+      await it(`HTTP 500 response`, async () => {
         const {success, error, value} = await variation({ method: 'get', url: `terraform/500Error/aws` });
         expect(success).toBe(false);
         expect(error).toBe(`Expected status 204 from terraform/500Error/aws, recieved 500`);
-        expect(value).toBe(undefined);
+        expect(value).toBeUndefined();
       });
 
-      await it(`format Error ...`, async () => {
+      await it(`Unexpected response format`, async () => {
         const {success, error, value} = await variation({ method: 'get', url: `terraform/formatError/aws` });
         expect(success).toBe(true);
-        expect(error).toBe(null);
+        expect(error).toBeNull();
         expect(value).toBe(`unexpectedformat`);
       });
 
-      await it(`noXTFGet Error ...`, async () => {
+      await it(`Missing x-terraform-get header`, async () => {
         const {success, error, value} = await variation({ method: 'get', url: `terraform/noXTFGetError/aws` });
         expect(success).toBe(true);
-        expect(error).toBe(null);
-        expect(value).toBe(undefined);
+        expect(error).toBeNull();
+        expect(value).toBeUndefined();
       });
 
-      await it(`undef Error ...`, async () => {
+      await it(`Missing response headers`, async () => {
         const {success, error, value} = await variation({ method: 'get', url: `terraform/undefError/aws` });
         expect(success).toBe(false);
         expect(error).toBe(`Response from terraform/undefError/aws did not include headers.`);
-        expect(value).toBe(undefined);
+        expect(value).toBeUndefined();
       });
 
       // I am questioning the validity of this test
-      await it(`Error ...`, async () => {
+      await it(`Mock fallback response`, async () => {
         const {success, error, value} = await variation({ method: 'get', url: `terraform/Error/aws` });
         expect(success).toBe(true);
-        expect(error).toBe(null);
+        expect(error).toBeNull();
         expect(value).toBe(`git::https://github.com/xascode/terraform-aws-modules/terraform-aws-vpc.git?ref=2.78.0`);
       });
 
-      await it(`Success ...`, async () => {
+      await it(`Mocked success response`, async () => {
         const {success, error, value} = await variation({ method: 'get', url: `terraform/Success/aws` });
         expect(success).toBe(true);
-        expect(error).toBe(null);
+        expect(error).toBeNull();
         expect(value).toBe(`git::https://github.com/xascode/terraform-aws-modules/terraform-aws-vpc.git?ref=2.78.0`);
       });
 
     } else {
 
-      await it (`Success ...`, async () => {
+      await it (`Registry download success`, async () => {
         const {success, error, value} = await variation({ method: 'get', url: `https://registry.terraform.io/v1/modules/terraform-aws-modules/vpc/aws/2.78.0/download` });
         expect(success).toBe(true);
-        expect(error).toBe(null);
+        expect(error).toBeNull();
         expect(value).toMatch(/^git::https:\/\/github\.com\/terraform-aws-modules\/terraform-aws-vpc\?ref=.+$/);
       });
 
-      await it (`404 Error ...`, async () => {
+      await it (`Registry 404 response`, async () => {
         const {success, error, value} = await variation({ method: 'get', url: `terraform-aws-modules/vpc/404Error` });
         expect(success).toBe(false);
         expect(error).toContain(`Exception ecountered fetching terraform-aws-modules/vpc/404Error from terraform registry.`);
-        expect(value).toBe(undefined);
+        expect(value).toBeUndefined();
       });
 
     }
