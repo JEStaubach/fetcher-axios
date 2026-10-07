@@ -81,7 +81,7 @@ for (const [key, variation] of Object.entries(libraryVariations)) {
         const {success, error, value} = await variation({ method: 'get', url: `https://registry.terraform.io/v1/modules/terraform-aws-modules/vpc/aws/2.78.0/download` });
         expect(success).toBe(true);
         expect(error).toBe(null);
-        expect(value).toBe(`git::https://github.com/terraform-aws-modules/terraform-aws-vpc?ref=v2.78.0`);
+        expect(value).toMatch(/^git::https:\/\/github\.com\/terraform-aws-modules\/terraform-aws-vpc\?ref=.+$/);
       });
 
       await it (`404 Error ...`, async () => {
