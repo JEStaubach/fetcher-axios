@@ -110,3 +110,4 @@ dist
 debug.log
 
 .secrets.*
+!.secrets.baseline

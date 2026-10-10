@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "bootstrap-sha": "7904b102d9df2fb05bf43fc248621813e8803ac5",
+  "packages": {
+    ".": {
+      "release-type": "node",
+      "package-name": "@jestaubach/fetcher-axios",
+      "bump-minor-pre-major": true
+    }
+  }
+}

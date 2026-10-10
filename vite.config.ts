@@ -2,10 +2,10 @@
 
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
+import { defineConfig } from 'vitest/config';
+import dts from 'unplugin-dts/vite';
 import builtinModules from 'builtin-modules';
-import pkg from './package.json';
+import pkg from './package.json' with { type: 'json' };
 
 const externalPackages = [
   ...builtinModules,
@@ -22,9 +22,10 @@ export default defineConfig({
       name: 'fetcher-axios',
       fileName: 'fetcher-axios',
     },
-    rollupOptions: {
+    rolldownOptions: {
       external: isExternal,
       output: {
+        banner: `if (typeof module !== 'undefined' && module.exports && typeof process !== 'undefined' && typeof process.emitWarning === 'function') { process.emitWarning('@jestaubach/fetcher-axios: The CommonJS/UMD entry is deprecated; migrate to the ESM entry.', { code: 'DEP_FETCHER_AXIOS_CJS', type: 'DeprecationWarning' }); }`,
         globals: {
           axios: 'axios',
         },
@@ -38,7 +39,9 @@ export default defineConfig({
   test: {
     coverage: {
       provider: 'istanbul',
-      reporter: [`text`, `json`, `html`, `lcov`]
+      reporter: [`text`, `json`, `html`, `lcov`],
+      include: ['src'],
+      exclude: ['src/**/*.d.ts', 'src/**/__tests__/**'],
     },
     environment: 'node',
     testTimeout: 20000
