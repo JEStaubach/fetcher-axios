@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/JEStaubach/fetcher-axios/compare/fetcher-axios-v0.2.0...fetcher-axios-v0.2.1) (2026-10-11)
+
+
+### deps
+
+* **fetcher-axios:** refresh analysis and coverage tooling ([e787079](https://github.com/JEStaubach/fetcher-axios/commit/e78707954f7440422cce546b4d893ec12815728d))
+
 ## [0.2.0](https://github.com/JEStaubach/fetcher-axios/compare/fetcher-axios-v0.1.9...fetcher-axios-v0.2.0) (2026-10-10)
 
 ### ⚠ BREAKING CHANGES
