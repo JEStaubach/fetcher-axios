@@ -38,7 +38,7 @@ export default defineConfig({
   plugins: [dts()],
   test: {
     coverage: {
-      provider: 'istanbul',
+      provider: 'v8',
       reporter: [`text`, `json`, `html`, `lcov`],
       include: ['src'],
       exclude: ['src/**/*.d.ts', 'src/**/__tests__/**'],
