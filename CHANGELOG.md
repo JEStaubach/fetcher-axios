@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/JEStaubach/fetcher-axios/compare/fetcher-axios-v0.2.1...fetcher-axios-v0.2.2) (2026-10-12)
+
+
+### Continuous Integration
+
+* **coderabbit:** add config file ([#69](https://github.com/JEStaubach/fetcher-axios/issues/69)) ([1900b83](https://github.com/JEStaubach/fetcher-axios/commit/1900b83c8a3fbe17ae355d23be9de01351b2ba55))
+
 ## [0.2.1](https://github.com/JEStaubach/fetcher-axios/compare/fetcher-axios-v0.2.0...fetcher-axios-v0.2.1) (2026-10-11)
 
 
