@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/JEStaubach/fetcher-axios/compare/fetcher-axios-v0.2.2...fetcher-axios-v0.2.3) (2026-10-13)
+
+
+### Continuous Integration
+
+* **release-please:** auto merge ([#73](https://github.com/JEStaubach/fetcher-axios/issues/73)) ([c2baa58](https://github.com/JEStaubach/fetcher-axios/commit/c2baa58dc4979566f3133e94264c15dd4e30acde))
+
 ## [0.2.2](https://github.com/JEStaubach/fetcher-axios/compare/fetcher-axios-v0.2.1...fetcher-axios-v0.2.2) (2026-10-12)
 
 
